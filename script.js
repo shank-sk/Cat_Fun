@@ -11,12 +11,15 @@ const facts = [
     "Night Vision: Cats have excellent night vision, allowing them to see in light levels six times lower than what a human needs. This makes them excellent nocturnal hunters."
 ];
 
-document.getElementById('showFactsButton').addEventListener('click', function() {
+let currentFactIndex = 0;
+
+document.getElementById('showFactButton').addEventListener('click', function() {
     const factsList = document.getElementById('factsList');
     factsList.innerHTML = ''; // Clear any existing facts
-    facts.forEach(fact => {
-        const listItem = document.createElement('li');
-        listItem.textContent = fact;
-        factsList.appendChild(listItem);
-    });
+
+    const listItem = document.createElement('li');
+    listItem.textContent = facts[currentFactIndex];
+    factsList.appendChild(listItem);
+
+    currentFactIndex = (currentFactIndex + 1) % facts.length; // Move to the next fact
 });
