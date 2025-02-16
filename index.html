@@ -3,8 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fun Facts</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Fun Facts About Cats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        li {
+            margin: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -12,6 +65,30 @@
         <button id="showFactButton">Show Next Fun Fact</button>
         <ul id="factsList"></ul>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        const facts = [
+            "Whisker Sensitivity: Cats have highly sensitive whiskers that can detect even the slightest changes in their environment, helping them navigate and hunt in the dark.",
+            "Purring Mystery: While cats often purr when they're content, they also purr when they're frightened, in pain, or even when they're healing. The frequency of their purrs has been shown to have therapeutic effects.",
+            "Unique Nose Prints: Just like human fingerprints, each cat's nose print is unique and can be used to identify them.",
+            "High Jumpers: Cats can jump up to six times their body length in one leap, thanks to their powerful leg muscles.",
+            "Sleepy Heads: On average, cats sleep for about 13 to 16 hours a day, which means they spend approximately two-thirds of their lives sleeping.",
+            "Communication: Cats have a wide range of vocalizations, with over 100 different sounds, compared to dogs' 10. They use these sounds to communicate with humans and other cats.",
+            "Ancient Companions: Cats were domesticated around 9,000 years ago, and they were revered in ancient Egypt, where they were often depicted in art and even mummified.",
+            "Flexible Bodies: Cats have a flexible spine and a unique collarbone that allows them to squeeze through tight spaces and land on their feet when they fall.",
+            "Grooming Experts: Cats spend a significant amount of time grooming themselves, which helps them regulate their body temperature and keep their fur clean.",
+            "Night Vision: Cats have excellent night vision, allowing them to see in light levels six times lower than what a human needs. This makes them excellent nocturnal hunters."
+        ];
+
+        document.getElementById('showFactButton').addEventListener('click', function() {
+            const factsList = document.getElementById('factsList');
+            factsList.innerHTML = ''; // Clear any existing fact
+
+            const listItem = document.createElement('li');
+            const randomIndex = Math.floor(Math.random() * facts.length); // Get a random fact
+            listItem.textContent = facts[randomIndex];
+            factsList.appendChild(listItem);
+        });
+    </script>
 </body>
 </html>
